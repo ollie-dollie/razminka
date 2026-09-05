@@ -1,11 +1,29 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<module type="JAVA_MODULE" version="4">
-  <component name="NewModuleRootManager" inherit-compiler-output="true">
-    <exclude-output />
-    <content url="file://$MODULE_DIR$">
-      <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />
-    </content>
-    <orderEntry type="inheritedJdk" />
-    <orderEntry type="sourceFolder" forTests="false" />
-  </component>
-</module>
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.println("Введите первое число:");
+        int a = sc.nextInt();
+
+        System.out.println("Введите второе число:");
+        int b = sc.nextInt();
+
+        int result = multiplyUsingLogs(a, b);
+        System.out.println("Результат умножения: " + result);
+
+    }
+    public static int multiplyUsingLogs(int a, int b) {
+        if (a == 0 || b == 0) return 0;
+
+        int sign = ((a < 0) ^ (b < 0)) ? -1 : 1;
+
+        double x = Math.abs((double) a);
+        double y = Math.abs((double) b);
+
+        double result = Math.exp(Math.log(x) + Math.log(y));
+
+        return (int) (sign * Math.round(result));
+    }
+}
